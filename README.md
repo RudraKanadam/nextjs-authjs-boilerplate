@@ -53,26 +53,27 @@
 <details>
   <summary><strong>📥 Clone the repository</strong></summary>
 
-  ```sh
+  ```
   git clone https://github.com/your-repo/nextjs-auth.git
   cd nextjs-auth
+  ```
 
 ## 📦 Installation
 
 1. **📥 Clone the repository**:
-    ```sh
+    ```
     git clone https://github.com/your-repo/nextjs-auth.git
     cd nextjs-auth
     ```
 
 2. **📦 Install dependencies**:
-    ```sh
+    ```
     npm install
     ```
 
 3. **⚙️ Create a `.env.local` file and configure the environment variables**:
 
-    ```env
+    ```
     NEXTAUTH_SECRET=your-secret
     NEXTAUTH_URL=http://localhost:3000
 
@@ -87,7 +88,7 @@
     ```
 
 4. **🚀 Run the development server**:
-    ```sh
+    ```
     npm run dev
     ```
 
