@@ -57,7 +57,7 @@
   git clone https://github.com/your-repo/nextjs-auth.git
   cd nextjs-auth
   ```
-
+</details>
 ## 📦 Installation
 
 1. **📥 Clone the repository**:
