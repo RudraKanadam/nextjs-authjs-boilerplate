@@ -100,7 +100,7 @@ export default function LoginForm() {
         </LabelInputContainer>
         <div className="mt-4 mb-2 text-right">
           <Link
-            href="/auth/forgot-password"
+            href="/forgot-password"
             className="text-blue-500 hover:text-blue-700"
           >
             Forgot Password?
