@@ -8,10 +8,10 @@ import SocialButtons from "@/components/auth/socialButtons";
 import SubmitButton from "@/components/auth/submitButton";
 import LabelInputContainer from "@/components/auth/labelInputContainer";
 import PasswordInput from "@/components/auth/passwordInput";
-import { signupSchema } from "@/validatorSchema";
+import { registerSchema } from "@/validatorSchema";
 import FormError from "@/components/auth/formError";
 import FormSuccess from "@/components/auth/formSuccess";
-// import { signup } from "@/actions/signup";
+import { register } from "@/actions/register";
 
 export default function SignupForm() {
   const [isPending, startTransition] = useTransition();
@@ -31,7 +31,7 @@ export default function SignupForm() {
     setServerSuccess("");
     e.preventDefault();
 
-    const result = signupSchema.safeParse(formData);
+    const result = registerSchema.safeParse(formData);
 
     if (!result.success) {
       const fieldErrors = result.error.format();
@@ -47,12 +47,12 @@ export default function SignupForm() {
     setErrors({ name: "", email: "", password: "" });
 
     // Proceed with form submission logic
-    // startTransition(() => {
-    //   signup(formData).then((data) => {
-    //     setServerError(data.error);
-    //     setServerSuccess(data.success);
-    //   });
-    // });
+    startTransition(() => {
+      register(formData).then((data) => {
+        setServerError(data.error);
+        setServerSuccess(data.success);
+      });
+    });
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -106,7 +106,7 @@ export default function SignupForm() {
           <FormError message={errors.password} />
         </LabelInputContainer>
         <SubmitButton disabled={isPending} type="submit">
-          Sign up &rarr;
+          Register &rarr;
         </SubmitButton>
         <div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent my-8 h-[1px] w-full" />
         {serverError && <FormError message={serverError} />}
