@@ -79,7 +79,7 @@ export default function LoginForm() {
           <Label htmlFor="email">Email Address</Label>
           <Input
             id="email"
-            placeholder="projectmayhem@fc.com"
+            placeholder="your-email@example.com"
             type="email"
             disabled={isPending}
             value={formData.email}

@@ -73,7 +73,7 @@ export default function SignupForm() {
             <Label htmlFor="name">Name</Label>
             <Input
               id="name"
-              placeholder="Tyler"
+              placeholder="John Wick"
               type="text"
               value={formData.name}
               onChange={handleChange}
@@ -86,7 +86,7 @@ export default function SignupForm() {
           <Label htmlFor="email">Email Address</Label>
           <Input
             id="email"
-            placeholder="projectmayhem@fc.com"
+            placeholder="your-email@example.com"
             type="email"
             value={formData.email}
             onChange={handleChange}

@@ -1,6 +1,5 @@
 import React, { ReactNode } from "react";
 import { IconBrandGithub, IconBrandGoogle } from "@tabler/icons-react";
-import { cn } from "@/lib/utils";
 
 const SocialButtons = () => {
   return (
