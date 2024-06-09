@@ -1,4 +1,3 @@
-export { auth as middleware } from "@/auth";
 import { NextResponse } from "next/server";
 import { getToken, GetTokenParams } from "next-auth/jwt";
 import { NextRequest } from "next/server";
