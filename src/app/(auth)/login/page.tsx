@@ -12,7 +12,7 @@ import PasswordInput from "@/components/auth/passwordInput";
 import { loginSchema } from "@/validatorSchema";
 import FormError from "@/components/auth/formError";
 import FormSuccess from "@/components/auth/formSuccess";
-// import { login } from "@/actions/login";
+import { login } from "@/actions/login";
 
 export default function LoginForm() {
   const router = useRouter();
@@ -49,17 +49,17 @@ export default function LoginForm() {
     setErrors({ email: "", password: "" });
 
     // Proceed with form submission logic
-    // startTransition(() => {
-    //   login(formData).then((data) => {
-    //     if (data) {
-    //       setServerError(data.error);
-    //       setServerSuccess(data.success);
-    //       if (data.success && data.redirect) {
-    //         router.push(data.redirect);
-    //       }
-    //     }
-    //   });
-    // });
+    startTransition(() => {
+      login(formData).then((data) => {
+        if (data) {
+          setServerError(data.error);
+          setServerSuccess(data.success);
+          if (data.success && data.redirect) {
+            router.push(data.redirect);
+          }
+        }
+      });
+    });
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -117,7 +117,7 @@ export default function LoginForm() {
         <div className="mt-4 text-center">
           <span className="text-gray-600">Don&apos;t have an account? </span>
           <Link href="/register" className="text-blue-500 hover:text-blue-700">
-            Sign Up
+            Register
           </Link>
         </div>
       </form>
