@@ -4,7 +4,7 @@ import { PrismaAdapter } from "@auth/prisma-adapter";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { db } from "@/lib/db";
 import { loginSchema } from "./validatorSchema";
-import { getUserByEmail } from "./data/user";
+import { getUserByEmail, getUserById } from "./data/user";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: PrismaAdapter(db),
@@ -34,13 +34,21 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   },
   callbacks: {
     async session({ session, token }: { session: any; token: any }) {
-      session.user.id = token.id;
+      if (token.sub && session.user) {
+        session.user.id = token.sub;
+      }
+
+      if (token.role && session.user) {
+        session.user.role = token.role;
+      }
+
       return session;
     },
     async jwt({ token, user }: { token: any; user: any }) {
-      if (user) {
-        token.id = user.id;
-      }
+      if (!token.sub) return token;
+      const existingUser = await getUserById(token.sub);
+      if (!existingUser) return token;
+      token.role = existingUser.role;
       return token;
     },
   },
