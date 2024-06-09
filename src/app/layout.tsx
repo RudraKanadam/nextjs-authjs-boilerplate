@@ -1,17 +1,15 @@
 import type { Metadata } from "next";
-import { Roboto } from "next/font/google";
-import { ThemeProvider } from "@/providers/theme-provider";
+import { DM_Sans } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/providers/theme-provider";
+import ModalProvider from "@/providers/modal-provider";
+import { Toaster } from "@/components/ui/sonner";
 
-const roboto = Roboto({
-  weight: "300",
-  subsets: ["latin"],
-  display: "swap",
-});
+const font = DM_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "NextJS boilerplate",
-  description: "Boilerplate",
+  title: "AsyInk",
+  description: "Automate.Integrate.Accelerate",
 };
 
 export default function RootLayout({
@@ -21,14 +19,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={roboto.className}>
+      <body className={font.className}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <ModalProvider>
+            {children}
+            <Toaster />
+          </ModalProvider>
         </ThemeProvider>
       </body>
     </html>

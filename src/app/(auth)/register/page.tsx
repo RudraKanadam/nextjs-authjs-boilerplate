@@ -12,6 +12,7 @@ import { registerSchema } from "@/validatorSchema";
 import FormError from "@/components/auth/formError";
 import FormSuccess from "@/components/auth/formSuccess";
 import { register } from "@/actions/register";
+import { Checkbox } from "@/components/ui/checkbox";
 
 export default function SignupForm() {
   const [isPending, startTransition] = useTransition();
